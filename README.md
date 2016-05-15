@@ -1,10 +1,4 @@
-                             
-                             
- ___ ___ _ _ ___ ___ ___ _ _ 
-|  _| . | | | -_|  _| . | | |
-|___|___|\_/|___|_| |  _|_  |
-                    |_| |___|
-                    
+# coverpy
 Small wrapper for the iTunes API; mostly for fetching album covers. **Will soon be transferred over to Mxious, as it was built for it.** 
 
 **Docs need to be done, I know. Been busy.**
