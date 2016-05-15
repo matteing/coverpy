@@ -1,9 +1,9 @@
                              
+                             
  ___ ___ _ _ ___ ___ ___ _ _ 
 |  _| . | | | -_|  _| . | | |
 |___|___|\_/|___|_| |  _|_  |
-                    |_| |___| v1.0
-                    
+                    |_| |___|
                     
 Small wrapper for the iTunes API; mostly for fetching album covers. **Will soon be transferred over to Mxious, as it was built for it.** 
 
