@@ -1,8 +1,6 @@
 import os
 import requests
-
-class NoResultsError(Exception):
-	pass
+from . import exceptions
 
 class Result:
 	def __init__(self, item):
@@ -62,8 +60,8 @@ class CoverPy:
 		parsed = search.json()
 
 		if parsed['resultCount'] == 0:
-			raise NoResultsError
-			
+			raise exceptions.NoResultsException
+
 		result = parsed['results'][0]
 		result['url'] = search.url
 
