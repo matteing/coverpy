@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
 	# PyPI specific meta
 	name='coverpy',
-	version='0.8',
+	version='0.1',
 	license='MIT License',
 	author="fallenshell",
 	author_email='dev@mxio.us',
