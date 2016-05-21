@@ -1,3 +1,5 @@
+.PHONY: test install
+
 publish:
 	python3 setup.py sdist bdist_wheel upload
 
@@ -8,4 +10,4 @@ install:
 	pip install -r requirements.txt
 
 test:
-	py.test tests
+	green --run-coverage -vv

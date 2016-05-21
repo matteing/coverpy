@@ -13,4 +13,6 @@ setup(
 	# Package routines
 	packages=find_packages(exclude=['scripts', 'tests']),
 	install_requires=['requests'],
+	test_suite='green.test',
+	tests_require=['coverage', 'green', 'requests'],
 )

@@ -11,7 +11,7 @@ class TestCoverpy(unittest.TestCase):
 		self.empty_response = os.path.join(os.path.dirname(__file__), 'mocks/SuchFakeAlbumPls.json')
 
 	@httpretty.activate
-	def test_get_cover(self):
+	def test_get_cover_parse_result(self):
 		# OK Computer response
 		httpretty.register_uri(httpretty.GET, 
 					"https://itunes.apple.com/search/?limit=1&entity=musicArtist%2CmusicTrack%2Calbum%2Cmix%2Csong&term=OK+Computer&media=music",
