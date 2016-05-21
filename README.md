@@ -4,6 +4,7 @@ Small wrapper for the iTunes API; mostly for fetching album covers. **Will soon 
 **Docs need to be done, I know. Been busy.**
 
 ## Install
+This library requires Python 3.0+. It might work, but proceed with caution.
 `pip install coverpy`
 For development installs:
 `make install`
