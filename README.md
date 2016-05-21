@@ -4,7 +4,13 @@ Small wrapper for the iTunes API; mostly for fetching album covers. **Will soon 
 **Docs need to be done, I know. Been busy.**
 
 ## Install
-The install process is currently screwed, as I am new to Python and don't understand packaging very well. It seems complicated. Will fix. Meanwhile, import the file manually.
+`pip install coverpy`
+For development installs:
+`make install`
+
+## Testing
+`make test`
+Will run unit and coverage tests.
 
 ## Usage
 Usage is very simple:
