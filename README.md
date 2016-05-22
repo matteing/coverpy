@@ -1,4 +1,6 @@
 # coverpy
+[![Build Status](https://travis-ci.org/fallenshell/coverpy.svg?branch=master)](https://travis-ci.org/fallenshell/coverpy) [![Build Status](https://travis-ci.org/fallenshell/coverpy.svg?branch=develop)](https://travis-ci.org/fallenshell/coverpy)
+
 Small wrapper for the iTunes API; mostly for fetching album covers. **Will soon be transferred over to Mxious, as it was built for it.** 
 
 **Docs need to be done, I know. Been busy.**
@@ -10,8 +12,8 @@ For development installs:
 `make install`
 
 ## Testing
+We have a Travis CI instance that unit tests automatically on commits. To run code coverage tests and unit tests, run:
 `make test`
-Will run unit and coverage tests.
 
 ## Usage
 Usage is very simple:
