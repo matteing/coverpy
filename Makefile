@@ -1,4 +1,4 @@
-.PHONY: test install
+.PHONY: test install clean
 
 publish:
 	python3 setup.py sdist bdist_wheel upload
@@ -11,3 +11,6 @@ install:
 
 test:
 	green --run-coverage -vv
+
+clean:
+	python3 setup.py clean --all
