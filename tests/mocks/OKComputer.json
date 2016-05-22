@@ -1,0 +1,5 @@
+{
+ "resultCount":1,
+ "results": [
+{"wrapperType":"collection", "collectionType":"Album", "artistId":657515, "collectionId":1097861387, "amgArtistId":41092, "artistName":"Radiohead", "collectionName":"OK Computer", "collectionCensoredName":"OK Computer", "artistViewUrl":"https://itunes.apple.com/us/artist/radiohead/id657515?uo=4", "collectionViewUrl":"https://itunes.apple.com/us/album/ok-computer/id1097861387?uo=4", "artworkUrl60":"http://is4.mzstatic.com/image/thumb/Music69/v4/4e/b8/ba/4eb8ba96-6ee2-8a60-f012-a7a61a4fe097/source/60x60bb.jpg", "artworkUrl100":"http://is4.mzstatic.com/image/thumb/Music69/v4/4e/b8/ba/4eb8ba96-6ee2-8a60-f012-a7a61a4fe097/source/100x100bb.jpg", "collectionPrice":9.99, "collectionExplicitness":"notExplicit", "trackCount":12, "copyright":"℗ 2016 XL Recordings", "country":"USA", "currency":"USD", "releaseDate":"2016-04-01T07:00:00Z", "primaryGenreName":"Alternative"}]
+}

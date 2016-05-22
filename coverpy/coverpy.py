@@ -13,7 +13,12 @@ class Result:
 		if 'kind' in item:
 			self.type = item['kind'].lower()
 		elif 'wrapperType' in item:
-			self.type = item['wrapperType'].lower()
+			if item['wrapperType'].lower() == 'track':
+				self.type = 'song'
+			elif item['wrapperType'].lower() == 'collection':
+				self.type = 'album'
+		elif 'collectionType' in item:
+			self.type = 'album'
 		else:
 			# Assuming edge case of the API
 			self.type = 'unknown'
@@ -52,10 +57,11 @@ class CoverPy:
 			'term': term,
 			'limit': limit
 		}
+
 		req = self._get(payload)
 		return req
 
-	def get_cover(self, term, limit = 1):
+	def get_cover(self, term, limit = 1, debug = False):
 		search = self._search(term, limit)
 		parsed = search.json()
 

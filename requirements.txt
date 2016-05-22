@@ -1,2 +1,6 @@
-pkg-resources==0.0.0
-requests==2.9.1
+colorama==0.3.7
+coverage==4.1
+green==2.4.1
+httpretty==0.8.14
+python-termstyle==0.1.10
+requests==2.10.0

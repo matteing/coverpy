@@ -1,10 +1,19 @@
 # coverpy
+[![Build Status](https://travis-ci.org/fallenshell/coverpy.svg?branch=master)](https://travis-ci.org/fallenshell/coverpy) [![Build Status](https://travis-ci.org/fallenshell/coverpy.svg?branch=develop)](https://travis-ci.org/fallenshell/coverpy)
+
 Small wrapper for the iTunes API; mostly for fetching album covers. **Will soon be transferred over to Mxious, as it was built for it.** 
 
 **Docs need to be done, I know. Been busy.**
 
 ## Install
-The install process is currently screwed, as I am new to Python and don't understand packaging very well. It seems complicated. Will fix. Meanwhile, import the file manually.
+This library requires Python 3.0+. It might work, but proceed with caution.
+`pip install coverpy`
+For development installs:
+`make install`
+
+## Testing
+We have a Travis CI instance that unit tests automatically on commits. To run code coverage tests and unit tests, run:
+`make test`
 
 ## Usage
 Usage is very simple:
