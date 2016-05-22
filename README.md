@@ -1,5 +1,5 @@
 # coverpy
-[![Build Status](https://travis-ci.org/fallenshell/coverpy.svg?branch=master)](https://travis-ci.org/fallenshell/coverpy) [![Build Status](https://travis-ci.org/fallenshell/coverpy.svg?branch=develop)](https://travis-ci.org/fallenshell/coverpy)
+[![Build Status](https://travis-ci.org/fallenshell/coverpy.svg?branch=master)](https://travis-ci.org/fallenshell/coverpy)
 
 Small wrapper for the iTunes API; mostly for fetching album covers. **Will soon be transferred over to Mxious, as it was built for it.** 
 
