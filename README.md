@@ -1,5 +1,5 @@
 # coverpy
-[![Build Status](https://travis-ci.org/fallenshell/coverpy.svg?branch=master)](https://travis-ci.org/fallenshell/coverpy)
+[![Build Status](https://travis-ci.org/fallenshell/coverpy.svg?branch=master)](https://travis-ci.org/fallenshell/coverpy) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fallenshell/coverpy/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fallenshell/coverpy/?branch=master)
 
 Small wrapper for the iTunes API; mostly for fetching album covers. 
 
