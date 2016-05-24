@@ -1,7 +1,7 @@
 # coverpy
 [![Build Status](https://travis-ci.org/fallenshell/coverpy.svg?branch=master)](https://travis-ci.org/fallenshell/coverpy) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fallenshell/coverpy/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fallenshell/coverpy/?branch=master)
 
-Small wrapper for the iTunes API; mostly for fetching album covers. 
+Small wrapper for the iTunes API; mostly for fetching album covers. As of now, fully feature complete.
 
 ## Install
 This library requires Python 3.0+. It might work on 2, but proceed with caution.
