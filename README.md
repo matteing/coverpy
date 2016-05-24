@@ -24,8 +24,14 @@ Usage is very simple:
     coverpy = coverpy.CoverPy()
     # Set a limit. There is a default (1), but I set it manually to showcase usage.
     limit = 1
-    # Get results. Returns a Result object.
-    result = coverpy.get_cover("OK Computer", limit)
-    
-    # Set a size for the artwork (first parameter) and get the result url.
-    print result.artwork(100)
+
+    try:
+    	result = coverpy.get_cover("OK Computer", limit)
+    	# Set a size for the artwork (first parameter) and get the result url.
+    	print(result.name)
+    	print(result.artwork(100))
+    except coverpy.exceptions.NoResultsException:
+    	print("Nothing found.")
+    except requests.exceptions.HTTPError:
+    	print("Could not execute GET request")
+
