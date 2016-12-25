@@ -11,7 +11,20 @@ class Result:
 
 	def parse(self, item):
 		""" Parse the given list into self variables. """
-		self.artworkThumb = item['artworkUrl100']
+		try:
+			self.artworkThumb = item['artworkUrl100']
+		except KeyError as e:
+			# A vital parameter is missing, and magic on our end can't get us out of this error case situation.
+			# Therefore, we try to save the user from issues (mostly KeyErrors), and stop them from using the public API.
+			# Just return a NoResultsException, because the data is corrupt on the API's end,
+			# and the library can't use the results.
+
+			# This gets many edge cases in which the API had issues dealing with.
+			raise exceptions.NoResultsException
+
+		
+		# The above should prevent most keyerrors, this one is just guarding. However, if something fails here,
+		# I can't do much because the API sometimes skips on things and this is _not vital._
 		self.artist = item['artistName']
 		self.album = item['collectionName']
 		self.url = item['url']
