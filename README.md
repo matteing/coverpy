@@ -1,26 +1,19 @@
 # coverpy
 
-[![CI](https://github.com/matteing/coverpy/actions/workflows/ci.yml/badge.svg)](https://github.com/matteing/coverpy/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/coverpy.svg)](https://pypi.org/project/coverpy/)
-[![Python](https://img.shields.io/pypi/pyversions/coverpy.svg)](https://pypi.org/project/coverpy/)
+_🌟 just turned 10 years old!_
 
-`coverpy` is a small, typed Python client for finding albums, songs, artists, and artwork
-through Apple's public iTunes Search API. It has no API key requirement.
+`coverpy` is a tiny library for grabbing high-res album covers, including motion artwork, from Apple Music. No API key needed.
 
-> A little history: I built the original version when I was like 15, lol. This library is
+> I built the original version when I was like 15, lol. This library is
 > ten years old, and version 1.0 brings it back with a modern Python API and toolchain.
 
 ## Highlights
 
-- Python 3.10+ with complete type information
 - Album, song, artist, music video, and mix searches
 - ID and UPC lookups
-- Experimental Apple Music motion artwork with HLS and direct MP4 URLs
-- Rich result metadata, including release dates, prices, genres, explicitness, duration,
-  streamability, previews, and Store URLs
-- Configurable storefront, timeout, language, explicit-content filtering, and artwork size
-- A zero-setup `uvx` command-line interface
-- `uv`-based development, builds, and reproducible dependency locking
+- Grab Apple Music motion artwork with HLS and direct MP4 URLs
+- Configurable artwork size
+- A zero-setup `uvx` CLI for messing around
 
 ## Install
 
@@ -56,8 +49,6 @@ with CoverPy(country="US") as client:
         print("Nothing found.")
     else:
         print(result.name)
-        print(result.artist_name)
-        print(result.release_date)
         print(result.artwork(1200))
 ```
 
