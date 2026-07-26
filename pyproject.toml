@@ -47,6 +47,7 @@ build-backend = "uv_build"
 
 [tool.pytest.ini_options]
 addopts = "--cov=coverpy --cov-report=term-missing --cov-fail-under=95 -ra"
+markers = ["e2e: calls Apple's live APIs and requires COVERPY_RUN_E2E=1"]
 testpaths = ["tests"]
 
 [tool.coverage.run]

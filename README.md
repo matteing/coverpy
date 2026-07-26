@@ -149,9 +149,16 @@ uv build --no-sources
 uvx --from twine twine check dist/*
 ```
 
+Run the opt-in end-to-end tests against Apple's live APIs:
+
+```console
+COVERPY_RUN_E2E=1 uv run pytest -m e2e tests/e2e --no-cov
+```
+
 The repository uses GitHub Actions instead of Travis CI. CI tests every supported Python
 version, checks formatting, linting, typing, coverage, and verifies both wheel and source
-distributions.
+distributions. A separate scheduled workflow validates the iTunes catalog, CLI, Apple Music
+motion metadata, HLS playlists, and direct MP4 delivery against the live services.
 
 ## Releasing
 
