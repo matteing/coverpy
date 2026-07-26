@@ -17,5 +17,9 @@ class ArtworkUnavailableError(CoverPyError):
     """Raised when a result does not include artwork."""
 
 
+class MotionArtworkError(CoverPyError):
+    """Raised when Apple Music motion artwork cannot be resolved."""
+
+
 # Kept for users of the original 2016 API.
 NoResultsException = NoResultsError

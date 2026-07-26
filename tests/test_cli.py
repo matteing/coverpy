@@ -5,6 +5,7 @@ from typing import Any
 
 import responses
 
+from coverpy import MotionArtwork
 from coverpy.cli import main
 
 SEARCH_URL = "https://itunes.apple.com/search"
@@ -51,3 +52,46 @@ def test_cli_handles_validation_errors(capsys: Any) -> None:
 
     assert exit_code == 2
     assert "limit" in capsys.readouterr().err
+
+
+@responses.activate
+def test_cli_prints_motion_artwork(
+    album_item: dict[str, Any], capsys: Any, monkeypatch: Any
+) -> None:
+    responses.get(SEARCH_URL, json={"resultCount": 1, "results": [album_item]})
+    motion = MotionArtwork(
+        album_id=1097861387,
+        hls_url="https://video.example/master.m3u8",
+        video_url="https://video.example/cover.mp4",
+        hq_video_url="https://video.example/cover-hq.mp4",
+    )
+    monkeypatch.setattr("coverpy.cli.CoverPy.get_motion_artwork", lambda *_: motion)
+
+    exit_code = main(["OK Computer", "--motion", "--json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert exit_code == 0
+    assert payload[0]["motion_artwork"]["video_url"] == "https://video.example/cover.mp4"
+    assert captured.err == ""
+
+
+@responses.activate
+def test_cli_prints_human_motion_artwork(
+    album_item: dict[str, Any], capsys: Any, monkeypatch: Any
+) -> None:
+    responses.get(SEARCH_URL, json={"resultCount": 1, "results": [album_item]})
+    motion = MotionArtwork(
+        album_id=1097861387,
+        hls_url="https://video.example/master.m3u8",
+        video_url="https://video.example/cover.mp4",
+        hq_video_url="https://video.example/cover-hq.mp4",
+    )
+    monkeypatch.setattr("coverpy.cli.CoverPy.get_motion_artwork", lambda *_: motion)
+
+    exit_code = main(["OK Computer", "--motion"])
+
+    output = capsys.readouterr().out
+    assert exit_code == 0
+    assert "Motion: https://video.example/cover.mp4" in output
+    assert "Motion HQ: https://video.example/cover-hq.mp4" in output

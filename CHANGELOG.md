@@ -2,6 +2,18 @@
 
 All notable changes to coverpy are documented here.
 
+## [1.1.0] - 2026-07-25
+
+### Added
+
+- Experimental Apple Music motion artwork lookup for albums and search results.
+- Square and tall HLS URLs plus browser-friendly standard and high-quality direct MP4 URLs.
+- A `--motion` CLI option for human-readable and JSON output.
+
+### Changed
+
+- Prefer H.264 motion artwork variants over HEVC for wider browser compatibility.
+
 ## [1.0.0] - 2026-07-25
 
 ### Added
