@@ -7,10 +7,12 @@ from .exceptions import (
     ArtworkUnavailableError,
     CoverPyError,
     InvalidResponseError,
+    MotionArtworkError,
     NoResultsError,
     NoResultsException,
 )
 from .models import Result
+from .motion import MotionArtwork
 
 try:
     __version__ = version("coverpy")
@@ -24,6 +26,8 @@ __all__ = [
     "CoverPyError",
     "Entity",
     "InvalidResponseError",
+    "MotionArtwork",
+    "MotionArtworkError",
     "NoResultsError",
     "NoResultsException",
     "Result",

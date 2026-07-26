@@ -10,6 +10,7 @@ import requests
 
 from .exceptions import InvalidResponseError, NoResultsError
 from .models import Result
+from .motion import MotionArtwork, MotionArtworkResolver
 
 DEFAULT_BASE_URL = "https://itunes.apple.com"
 DEFAULT_USER_AGENT = "coverpy (+https://github.com/matteing/coverpy)"
@@ -45,6 +46,7 @@ class CoverPy:
         self._session = session or requests.Session()
         self._owns_session = session is None
         self._session.headers["User-Agent"] = DEFAULT_USER_AGENT
+        self._motion_artwork = MotionArtworkResolver(self._session, self.timeout)
 
     def __enter__(self) -> CoverPy:
         return self
@@ -159,6 +161,22 @@ class CoverPy:
         if entity is not None:
             params["entity"] = self._validate_entity(entity)
         return self._request("lookup", params)
+
+    def get_motion_artwork(
+        self,
+        album: Result | int | str,
+        *,
+        storefront: str | None = None,
+    ) -> MotionArtwork | None:
+        """Return experimental Apple Music motion artwork for an album."""
+        if isinstance(album, Result):
+            if album.collection_id is None:
+                raise ValueError("result does not include a collection ID")
+            album_id = album.collection_id
+        else:
+            album_id = int(self._validate_identifier(album))
+        country = self._validate_country(storefront or self.country).lower()
+        return self._motion_artwork.get(album_id, country)
 
     def _request(self, endpoint: str, params: Mapping[str, str | int]) -> list[Result]:
         response = self._session.get(

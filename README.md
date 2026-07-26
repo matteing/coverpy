@@ -15,6 +15,7 @@ through Apple's public iTunes Search API. It has no API key requirement.
 - Python 3.10+ with complete type information
 - Album, song, artist, music video, and mix searches
 - ID and UPC lookups
+- Experimental Apple Music motion artwork with HLS and direct MP4 URLs
 - Rich result metadata, including release dates, prices, genres, explicitness, duration,
   streamability, previews, and Store URLs
 - Configurable storefront, timeout, language, explicit-content filtering, and artwork size
@@ -88,6 +89,39 @@ with CoverPy() as client:
 `search()` and the lookup methods return an empty list when there are no matches.
 `get_cover()` keeps the original convenience behavior and raises `NoResultsError`.
 
+### Motion artwork
+
+Resolve the animated square and tall artwork Apple Music provides for some albums:
+
+```python
+from coverpy import CoverPy
+
+with CoverPy() as client:
+    album = client.get_cover("Kyoto Phoebe Bridgers")
+    motion = client.get_motion_artwork(album)
+
+if motion:
+    print(motion.video_url)  # Browser-friendly standard MP4
+    print(motion.hq_video_url)  # Highest H.264 MP4 available
+    print(motion.hls_url)  # Original square HLS playlist
+    print(motion.tall_hls_url)  # Optional 3:4 HLS playlist
+```
+
+`get_motion_artwork()` also accepts an Apple Music album ID. It returns `None` when the album
+has no motion artwork. The feature prefers H.264 variants for broad browser support and can
+be used from the CLI:
+
+```console
+uvx coverpy "Kyoto Phoebe Bridgers" --motion
+uvx coverpy "Kyoto Phoebe Bridgers" --motion --json
+```
+
+Motion artwork is experimental. Apple presents animated artwork in Apple Music, but its
+`editorialVideo` catalog field is not part of the documented public API. CoverPy discovers
+the same short-lived web token used by the Apple Music web player, so Apple can change or
+remove this endpoint without notice. Cache successful responses and retain static artwork
+as a fallback.
+
 ### Compatibility
 
 The original names still work: `CoverPy`, `Result`, `NoResultsException`, `result.artist`,
@@ -134,8 +168,10 @@ publishes them to PyPI.
 ## API and artwork terms
 
 Apple documents the iTunes Search API as rate-limited and recommends caching for heavier
-usage. Artwork and previews are promotional content governed by Apple's terms. Review the
+usage. Artwork, previews, and motion artwork are promotional content governed by Apple's
+terms. Review the
 [iTunes Search API overview](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/)
+and [Apple Music animated artwork guidance](https://help.apple.com/itc/albummotionguide/)
 before shipping them in a product.
 
 ## License
