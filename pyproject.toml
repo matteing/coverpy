@@ -1,0 +1,76 @@
+[project]
+name = "coverpy"
+version = "1.0.0"
+description = "A modern Python client for music artwork from the iTunes Search API"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Sergio Diaz" }]
+keywords = ["album-art", "artwork", "itunes", "music", "search"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Typing :: Typed",
+]
+dependencies = ["requests>=2.32,<3"]
+
+[project.urls]
+Changelog = "https://github.com/matteing/coverpy/blob/main/CHANGELOG.md"
+Issues = "https://github.com/matteing/coverpy/issues"
+Repository = "https://github.com/matteing/coverpy"
+
+[project.scripts]
+coverpy = "coverpy.cli:main"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.16",
+    "pytest>=8.4",
+    "pytest-cov>=6.2",
+    "responses>=0.25.7",
+    "ruff>=0.12",
+    "types-requests>=2.32.4",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+addopts = "--cov=coverpy --cov-report=term-missing --cov-fail-under=95 -ra"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["coverpy"]
+
+[tool.coverage.report]
+exclude_also = [
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+files = ["src", "tests"]
+
+[tool.ruff]
+extend-exclude = ["outputs", "work"]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["B", "C4", "E", "F", "I", "PT", "RUF", "SIM", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
