@@ -21,4 +21,13 @@ uv build --no-sources
 uvx --from twine twine check dist/*
 ```
 
-Tests must mock network access. Do not depend on the live Apple endpoint in the test suite.
+The default suite mocks network access so pull requests remain deterministic. Run the
+separate end-to-end suite to exercise the public iTunes API, Apple Music motion metadata,
+HLS playlists, direct MP4 delivery, and the installed CLI against live services:
+
+```console
+COVERPY_RUN_E2E=1 uv run pytest -m e2e tests/e2e --no-cov
+```
+
+GitHub Actions runs these tests after relevant pushes to `master`, every Monday, and on
+demand. Live failures can indicate an Apple API change rather than a CoverPy regression.

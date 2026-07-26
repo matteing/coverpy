@@ -1,0 +1,41 @@
+name: Live API E2E
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - ".github/workflows/e2e.yml"
+      - "src/**"
+      - "tests/e2e/**"
+      - "pyproject.toml"
+      - "uv.lock"
+  schedule:
+    - cron: "17 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: e2e-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  COVERPY_RUN_E2E: "1"
+  UV_VERSION: "0.11.32"
+
+jobs:
+  live-api:
+    name: Apple live APIs
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+      - run: uv python install 3.14
+      - run: uv sync --locked --all-groups --python 3.14
+      - run: uv run --python 3.14 pytest -m e2e tests/e2e --no-cov
